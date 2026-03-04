@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Link Gateway</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#000428,#004e92);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+    text-align:center;
+}
+
+.box{
+    background:rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    width:90%;
+    max-width:420px;
+    box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+.count{
+    font-size:45px;
+    font-weight:bold;
+    color:#00ffcc;
+    margin:20px 0;
+}
+
+.status{
+    font-size:14px;
+    opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>🔒 Verifying Access</h2>
+    <div class="count" id="counter">5</div>
+    <div class="status" id="statusText">Preparing secure link...</div>
+</div>
+
+<script>
+
+let links = [
+"https://www.effectivegatecpm.com/e8pemsbwzp?key=19920a9b141be6c8a33d67078a204e9a",
+"https://www.effectivegatecpm.com/n8cf9gid6?key=f3b2ebcf23740b3f502c28cc73864cfe",
+"https://www.effectivegatecpm.com/n4g4iez34?key=7379c95bc92e010c4534247498f95157",
+"https://www.effectivegatecpm.com/zvx7k7bmzu?key=5aefb068a943b9dd814ad508e6db47c8",
+"https://www.effectivegatecpm.com/tb1eznb0g8?key=828714b56faf7164a49260babf85349b",
+"https://www.effectivegatecpm.com/inmu3mug?key=ce398ca7ad2fbc689b05509016e86884",
+"https://www.effectivegatecpm.com/se349j47iz?key=2cfee1e12ccad3e723a0af9c6559cddb",
+"https://www.effectivegatecpm.com/a0tzivu57?key=c96e37334203b308496fcbb740449c43",
+"https://www.effectivegatecpm.com/rqsz38ex?key=8ae0e8a4ebdadded503fddc96deabb0f",
+"https://www.effectivegatecpm.com/szk7rv9vnq?key=85bc0fc3ac6cbe48261246961340ef1a"
+];
+
+let time = 5;
+let counter = document.getElementById("counter");
+let statusText = document.getElementById("statusText");
+
+let countdown = setInterval(function(){
+    time--;
+    counter.innerHTML = time;
+
+    if(time <= 0){
+        clearInterval(countdown);
+
+        statusText.innerHTML = "Opening first secure link...";
+        let firstLink = links[Math.floor(Math.random() * links.length)];
+        window.open(firstLink, "_blank");
+
+        setTimeout(function(){
+            statusText.innerHTML = "Finalizing access...";
+            let secondLink = links[Math.floor(Math.random() * links.length)];
+            window.location.href = secondLink;
+        },3000);
+    }
+
+},1000);
+
+</script>
+
+</body>
+</html>
